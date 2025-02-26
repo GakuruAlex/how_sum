@@ -9,7 +9,7 @@ def how_sum(target_sum: int, numbers: int) -> List[int]:
         result = how_sum(remainder, numbers)
         if result != None:
             return result + [number]
-        how_sum(remainder ,numbers)
+
 
 
 
