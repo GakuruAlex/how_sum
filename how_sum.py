@@ -22,14 +22,15 @@ def how_sum_memo(target_sum: int, numbers: List[int], memo: Dict[int, List[int]]
         memo[remainder] = result
         if result != None:
             return [number] + result
+    return None
 
 
 
 def main() -> None:
-    numbers: List[int] = [3, 4, 1, 2, 5]
-    target_sum: int = 0
+    numbers: List[int] = [7, 14]
+    target_sum: int = 300
     result = how_sum_memo(target_sum, numbers)
-    print(f"Numbers in {numbers} that can achieve target sum of {target_sum} are: {result}")
+    print(f"Possible combination of number(s) in {numbers} that can achieve target sum of {target_sum} are: {result}")
 
 if __name__ == "__main__":
     main()
