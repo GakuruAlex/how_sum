@@ -11,8 +11,10 @@ def how_sum(target_sum: int, numbers: int) -> List[int]:
             return result + [number]
         how_sum(remainder ,numbers)
 
+
+
 def main() -> None:
-    numbers: List[int] = [3, 7]
+    numbers: List[int] = [3, 5, 7]
     target_sum: int = 11
     result = how_sum(target_sum, numbers)
     print(f"Numbers in {numbers} that can achieve target sum of {target_sum} are: {result}")
