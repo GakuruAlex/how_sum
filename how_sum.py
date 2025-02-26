@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Dict
 def how_sum(target_sum: int, numbers: int) -> List[int]:
     if target_sum == 0:
         return []
@@ -9,12 +9,26 @@ def how_sum(target_sum: int, numbers: int) -> List[int]:
         result = how_sum(remainder, numbers)
         if result != None:
             return result + [number]
-        how_sum(remainder ,numbers)
+
+def how_sum_memo(target_sum: int, numbers: List[int], memo: Dict[int, List[int]] = {0: []}):
+    if target_sum in memo:
+        return memo[target_sum]
+    if target_sum < 0:
+        return None
+    for number in numbers:
+        remainder = target_sum - number
+
+        result = how_sum_memo(remainder, numbers, memo)
+        memo[remainder] = result
+        if result != None:
+            return [number] + result
+
+
 
 def main() -> None:
-    numbers: List[int] = [3, 7]
-    target_sum: int = 11
-    result = how_sum(target_sum, numbers)
+    numbers: List[int] = [3, 4, 1, 2, 5]
+    target_sum: int = 0
+    result = how_sum_memo(target_sum, numbers)
     print(f"Numbers in {numbers} that can achieve target sum of {target_sum} are: {result}")
 
 if __name__ == "__main__":
